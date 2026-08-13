@@ -1,31 +1,86 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# 🏨 Limehome - Compose Multiplatform
+Limehome is a premium Kotlin Multiplatform (KMP) mobile application targeting Android and iOS. It provides a seamless property search and booking experience, featuring a modern UI built with **Compose Multiplatform** and **Material 3**.
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## 📱 App Demo
+<p align="center">
+  <img src="assets/demo.gif" width="300"/>
+</p>
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+## 📱 Features & Core Screens
 
-### Running the apps
+### 1. ✨ Entry & Onboarding
+*   **Visual Splash Screen**: A smooth entry point for the application.
+*   **Interactive Onboarding**: Guides new users through the app's value proposition with options to sign up or explore as a guest.
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+### 2. 🔐 Authentication
+*   **Login Flow**: Secure login interface to personalize the user experience and manage bookings.
+*   **Session State**: Tracks login status and user information across the application.
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+### 3. 🏠 Smart Home Dashboard
+*   **Property Highlights**: Browse curated property listings with details like city, street, and special badges.
+*   **Quick Actions**: Easy access to search, support, and settings directly from the home screen.
 
-### Running tests
+### 4. 🔍 Property Search & Selection
+*   **Search Engine**: Find properties by city and number of guests.
+*   **Property Selection**: View a list of available properties based on search criteria.
+*   **Detailed Insights**: Deep dive into specific property details, including high-quality imagery and location information.
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
+### 5. ⚙️ User Preferences & Settings
+*   **Language Settings**: Support for multiple languages with a dedicated selection interface.
+*   **Notification Management**: Toggle and customize app notifications.
 
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
+### 6. 📩 Support & Feedback
+*   **Help Center**: Integrated support screen for user assistance.
+*   **Feedback System**: A dedicated channel for users to provide suggestions and report issues.
+
+## 🛠️ Architecture & Tech Stack
+The application leverages modern Kotlin Multiplatform architecture:
+
+| Component | Library / Framework | Description |
+| :--- | :--- | :--- |
+| **UI Framework** | Compose Multiplatform | Declarative shared UI for Android and iOS. |
+| **Design System** | Material 3 | Modern, accessible UI components. |
+| **Lifecycle** | AndroidX Lifecycle | Shared ViewModels and lifecycle-aware components. |
+| **Language** | Kotlin | 100% Kotlin codebase across all layers. |
+
+## 🚀 How to Run the Applications
+
+### Prerequisites
+*   **macOS** (Required for iOS compilation)
+*   **Android Studio** / **IntelliJ IDEA** with KMP plugin
+*   **Xcode** 15+
+*   **JDK** 17+
+
+### 🤖 Running the Android App
+1.  Open the project in Android Studio.
+2.  Select `androidApp` in the run configuration selector.
+3.  Click **Run** or use:
+    ```bash
+    ./gradlew :androidApp:installDebug
+    ```
+
+### 🍎 Running the iOS App
+1.  Navigate to the `iosApp` folder.
+2.  Open `iosApp.xcworkspace` in Xcode.
+3.  Select your target simulator/device and press **⌘ + R**.
+
+## 📂 Project Structure
+```text
+.
+├── androidApp/          # Android-specific entry point
+├── iosApp/              # iOS-specific Xcode project & SwiftUI wrapper
+├── shared/              # Shared KMP codebase
+│   └── src/
+│       ├── commonMain/  # Shared UI (Compose), screens, and logic
+│       │   └── kotlin/com/pax/limehome/
+│       │       ├── screens/    # UI Screen definitions
+│       │       ├── components/ # Reusable UI components
+│       │       ├── theme/      # Material 3 Design System
+│       │       └── network/    # Data & Networking logic
+│       ├── androidMain/ # Android-specific implementations
+│       └── iosMain/     # iOS-specific implementations
+└── build.gradle.kts     # Main multiplatform build script
+```
 
 ---
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+*Developed with ❤️ using Kotlin Multiplatform.*
